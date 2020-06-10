@@ -1,4 +1,4 @@
-package com.imhouses.lyricsapp.lyrics
+package com.imhouses.lyricsapp.ui.lyrics
 
 import android.os.Bundle
 import android.view.LayoutInflater

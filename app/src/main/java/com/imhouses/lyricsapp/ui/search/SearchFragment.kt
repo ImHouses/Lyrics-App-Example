@@ -1,4 +1,4 @@
-package com.imhouses.lyricsapp.search
+package com.imhouses.lyricsapp.ui.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
