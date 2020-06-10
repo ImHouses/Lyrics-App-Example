@@ -1,17 +1,14 @@
-package com.imhouses.lyricsapp.ui
+package com.imhouses.lyricsapp.ui.main
 
 import android.app.SearchManager
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.widget.SearchView
-import androidx.core.view.MenuItemCompat
 import androidx.databinding.DataBindingUtil
 import com.imhouses.lyricsapp.R
 import com.imhouses.lyricsapp.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
