@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Lyrics App</string>
+    <string name="app_name">LyricsOVH</string>
+
+    <string name="main_type">Type the song you want the lyrics</string>
+    <string name="main_connection_error">No hay conexión a Internet</string>
+    <string name="main_no_results">No hay resultados para tu búsqueda</string>
 </resources>
