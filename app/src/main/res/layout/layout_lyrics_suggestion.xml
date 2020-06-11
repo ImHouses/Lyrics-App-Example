@@ -11,6 +11,9 @@
         <variable
             name="songTitle"
             type="java.lang.String" />
+        <variable
+            name="albumThumbUrl"
+            type="java.lang.String" />
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -24,6 +27,7 @@
                 android:id="@+id/lyricsItemAlbumImage"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
+                app:imageUrl="@{albumThumbUrl}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" />
