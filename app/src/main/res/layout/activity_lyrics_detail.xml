@@ -31,7 +31,7 @@
                 app:imageUrl="@{song.albumThumb}"/>
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:orientation="vertical"
                 android:layout_gravity="center_vertical"
