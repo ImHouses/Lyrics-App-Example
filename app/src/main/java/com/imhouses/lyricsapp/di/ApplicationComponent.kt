@@ -4,6 +4,7 @@ import com.imhouses.lyricsapp.di.modules.AppModule
 import com.imhouses.lyricsapp.di.modules.DataSourceModule
 import com.imhouses.lyricsapp.di.modules.ViewModelModule
 import com.imhouses.lyricsapp.framework.remote.LyricsWebService
+import com.imhouses.lyricsapp.ui.lyrics.LyricsDetailActivity
 import com.imhouses.lyricsapp.ui.main.MainActivity
 import dagger.Component
 import javax.inject.Singleton
@@ -13,6 +14,8 @@ import javax.inject.Singleton
 interface ApplicationComponent {
 
     fun inject(mainActivity: MainActivity)
+
+    fun inject(lyricsDetailActivity: LyricsDetailActivity)
 
     fun exposeLyricsWebService(): LyricsWebService
 }

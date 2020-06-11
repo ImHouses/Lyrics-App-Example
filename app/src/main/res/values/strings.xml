@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">LyricsOVH</string>
     <string name="generic_error">There has been an error, try again :)</string>
+    <string name="connection_error">There is no Internet Connection</string>
 
     <string name="main_type">Type the song you want the lyrics</string>
-    <string name="main_connection_error">There is no Internet Connection</string>
     <string name="main_no_results">There are no results for your search</string>
 </resources>
