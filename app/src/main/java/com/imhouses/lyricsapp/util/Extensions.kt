@@ -7,5 +7,6 @@ inline suspend fun <T> tryOrHandle(errorHandler: ErrorHandler, block: ()->T): Re
     val result = block()
     ResultEntity.Success(result)
 } catch(throwable: Throwable) {
+    throwable.printStackTrace()
     ResultEntity.Error(errorHandler.getError(throwable))
 }
