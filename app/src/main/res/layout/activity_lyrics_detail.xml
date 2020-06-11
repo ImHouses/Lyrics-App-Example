@@ -4,6 +4,9 @@
         <variable
             name="lyrics"
             type="com.imhouses.lyricsapp.domain.LyricsEntity" />
+        <variable
+            name="song"
+            type="com.imhouses.lyricsapp.domain.SongEntity" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -33,17 +36,17 @@
                     android:layout_height="wrap_content"
                     android:textSize="23sp"
                     android:textStyle="bold"
-                    android:text="@{lyrics.song.songTitle}"/>
+                    android:text="@{song.songTitle}"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
-                    android:text="@{lyrics.song.albumTitle}"/>
+                    android:text="@{song.albumTitle}"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
-                    android:text="@{lyrics.song.artistName}"/>
+                    android:text="@{song.artistName}"/>
             </LinearLayout>
         </LinearLayout>
         <View
