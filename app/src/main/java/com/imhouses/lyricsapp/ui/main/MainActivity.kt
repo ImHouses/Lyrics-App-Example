@@ -2,6 +2,7 @@ package com.imhouses.lyricsapp.ui.main
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -15,7 +16,10 @@ import com.imhouses.lyricsapp.databinding.ActivityMainBinding
 import com.imhouses.lyricsapp.domain.ResultEntity
 import com.imhouses.lyricsapp.domain.SongEntity
 import com.imhouses.lyricsapp.domain.error.ErrorEntity
+import com.imhouses.lyricsapp.ui.IntentConstants
+import com.imhouses.lyricsapp.ui.lyrics.LyricsDetailActivity
 import com.imhouses.lyricsapp.ui.main.adapter.SuggestionsAdapter
+import com.imhouses.lyricsapp.ui.model.Song
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -24,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
     @Inject lateinit var mViewModel: MainActivityViewModel
-    private val mSuggestions: ArrayList<SongEntity> = arrayListOf()
+    private val mSuggestions: ArrayList<Song> = arrayListOf()
     private val job = Job()
     private val coroutineScope = CoroutineScope(job + Dispatchers.Main)
 
@@ -68,7 +72,12 @@ class MainActivity : AppCompatActivity() {
     private fun configureRecyclerView() {
         recyclerViewSuggestions.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = SuggestionsAdapter(mSuggestions)
+            adapter = SuggestionsAdapter(mSuggestions) { song: Song ->
+                Intent(this@MainActivity, LyricsDetailActivity::class.java).also { intent ->
+                    intent.putExtra(IntentConstants.TO_LYRICS_DETAIL_SONG_ENTITY_KEY, song)
+                    startActivity(intent)
+                }
+            }
             setHasFixedSize(false)
         }
     }
@@ -78,7 +87,9 @@ class MainActivity : AppCompatActivity() {
             is ResultEntity.Success -> {
                 mBinding.state = MainActivityState.SHOWING_RESULTS
                 mSuggestions.clear()
-                mSuggestions.addAll(result.data)
+                for (songEntity in result.data) {
+                    mSuggestions.add(Song.fromEntity(songEntity))
+                }
                 recyclerViewSuggestions.adapter?.notifyDataSetChanged()
             }
             is ResultEntity.Error -> {
@@ -92,7 +103,7 @@ class MainActivity : AppCompatActivity() {
         errorEntity.originalException.printStackTrace()
         when (errorEntity) {
             is ErrorEntity.Network -> {
-                mBinding.notifyString = getString(R.string.main_connection_error)
+                mBinding.notifyString = getString(R.string.connection_error)
             }
             else -> {
                 mBinding.notifyString = getString(R.string.generic_error)
