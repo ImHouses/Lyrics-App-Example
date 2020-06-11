@@ -4,5 +4,5 @@
     <string name="connection_error">There is no Internet Connection</string>
 
     <string name="main_type">Type the song you want the lyrics</string>
-    <string name="main_no_results">There are no results for your search</string>
+    <string name="main_no_results">There are no results</string>
 </resources>
