@@ -60,6 +60,7 @@ class LyricsDetailActivity : AppCompatActivity() {
         @StringRes
         val errorStringRes = when(errorEntity) {
             is ErrorEntity.Network -> R.string.connection_error
+            is ErrorEntity.ServiceUnavailable -> R.string.main_no_results
             else -> R.string.generic_error
         }
         Toast.makeText(
