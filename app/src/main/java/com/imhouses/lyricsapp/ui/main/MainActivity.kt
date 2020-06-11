@@ -22,7 +22,6 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mSearchView: SearchView
     private lateinit var mBinding: ActivityMainBinding
     @Inject lateinit var mViewModel: MainActivityViewModel
     private val mSuggestions: ArrayList<SongEntity> = arrayListOf()
@@ -42,12 +41,12 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.options_menu, menu)
         val searchMgr = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         menu?.also {
-            mSearchView = (it.findItem(R.id.search).actionView as SearchView).apply {
+            val searchView = (it.findItem(R.id.search).actionView as SearchView).apply {
                 setSearchableInfo(searchMgr.getSearchableInfo(componentName))
                 isIconifiedByDefault = false
                 requestFocus()
             }
-            mSearchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
                 override fun onQueryTextChange(newText: String?): Boolean {
                     job.cancelChildren()
                     if (!newText.isNullOrEmpty()) {
